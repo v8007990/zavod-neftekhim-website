@@ -56,23 +56,34 @@ export function Footer() {
           <div>
             <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-ink-500">Контакты</h3>
             <ul className="mt-4 space-y-3 text-sm">
-              <li className="flex items-start gap-3 text-ink-700">
-                <MapPin size={18} className="mt-0.5 shrink-0 text-steel-600" />
-                <span>{companyInfo.address}</span>
-              </li>
-              <li>
-                <a href={companyInfo.phoneHref} className="flex items-start gap-3 text-ink-700 hover:text-steel-800">
-                  <Phone size={18} className="mt-0.5 shrink-0 text-steel-600" />
-                  <span>{companyInfo.phone}</span>
-                </a>
-              </li>
-              <li>
-                <a href={companyInfo.emailHref} className="flex items-start gap-3 text-ink-700 hover:text-steel-800">
-                  <Mail size={18} className="mt-0.5 shrink-0 text-steel-600" />
-                  <span>{companyInfo.email}</span>
-                </a>
-              </li>
+              {companyInfo.address ? (
+                <li className="flex items-start gap-3 text-ink-700">
+                  <MapPin size={18} className="mt-0.5 shrink-0 text-steel-600" />
+                  <span>{companyInfo.address}</span>
+                </li>
+              ) : null}
+              {companyInfo.phoneHref && companyInfo.phone ? (
+                <li>
+                  <a href={companyInfo.phoneHref} className="flex items-start gap-3 text-ink-700 hover:text-steel-800">
+                    <Phone size={18} className="mt-0.5 shrink-0 text-steel-600" />
+                    <span>{companyInfo.phone}</span>
+                  </a>
+                </li>
+              ) : null}
+              {companyInfo.emailHref && companyInfo.email ? (
+                <li>
+                  <a href={companyInfo.emailHref} className="flex items-start gap-3 text-ink-700 hover:text-steel-800">
+                    <Mail size={18} className="mt-0.5 shrink-0 text-steel-600" />
+                    <span>{companyInfo.email}</span>
+                  </a>
+                </li>
+              ) : null}
             </ul>
+            {!companyInfo.address && !companyInfo.phone && !companyInfo.email ? (
+              <p className="mt-4 text-sm text-ink-500">
+                Контактные данные заполняются. Направить запрос можно через форму.
+              </p>
+            ) : null}
             <button
               type="button"
               onClick={() => goToSection('#request')}

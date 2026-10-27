@@ -3,6 +3,7 @@ import { SectionHeading } from './SectionHeading';
 import { Reveal } from './Reveal';
 import { Button } from './Button';
 import { getIcon } from './icons';
+import { goToSection } from '@/router';
 import { industries } from '@/data/site';
 
 const industryImage =
@@ -54,7 +55,7 @@ export function Industries() {
 
             <Reveal delay={420}>
               <div className="mt-8">
-                <Button href="#request" variant="primary" icon={<ArrowRight size={16} />}>
+                <Button onClick={() => goToSection('#request')} variant="primary" icon={<ArrowRight size={16} />}>
                   Обсудить ваш проект
                 </Button>
               </div>

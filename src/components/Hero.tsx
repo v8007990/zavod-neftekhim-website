@@ -55,7 +55,7 @@ export function Hero() {
           <div className="mt-12 flex animate-fade-up items-center gap-3 [animation-delay:320ms]">
             <ShieldCheck size={18} className="text-steel-200" />
             <p className="text-sm text-ink-300">
-              Контроль качества и сопроводительная документация на каждую партию
+              Изготовление по чертежам и техническим требованиям заказчика
             </p>
           </div>
         </div>

@@ -73,12 +73,20 @@ export function RequestSection() {
               className="[&_h2]:text-white [&_p]:text-steel-100 [&_.text-steel-600]:text-steel-200 [&_span]:bg-steel-400"
             />
 
-            <div className="mt-10 grid gap-5 sm:grid-cols-2">
-              <ContactCard label="Телефон" value={companyInfo.phone} href={companyInfo.phoneHref} />
-              <ContactCard label="Электронная почта" value={companyInfo.email} href={companyInfo.emailHref} />
-            </div>
+            {companyInfo.phone && companyInfo.phoneHref ? (
+              <div className="mt-10 grid gap-5 sm:grid-cols-2">
+                <ContactCard label="Телефон" value={companyInfo.phone} href={companyInfo.phoneHref} />
+                {companyInfo.email && companyInfo.emailHref && (
+                  <ContactCard label="Электронная почта" value={companyInfo.email} href={companyInfo.emailHref} />
+                )}
+              </div>
+            ) : companyInfo.email && companyInfo.emailHref ? (
+              <div className="mt-10 grid gap-5 sm:grid-cols-2">
+                <ContactCard label="Электронная почта" value={companyInfo.email} href={companyInfo.emailHref} />
+              </div>
+            ) : null}
             <p className="mt-6 max-w-md text-sm text-steel-200">
-              Также вы можете направить чертежи и спецификации на нашу почту — это ускорит подготовку расчёта.
+              Вы также можете приложить чертежи и спецификации к запросу — это ускорит подготовку расчёта.
             </p>
           </Reveal>
 
@@ -158,6 +166,7 @@ export function RequestSection() {
 }
 
 function ContactCard({ label, value, href }: { label: string; value: string; href: string }) {
+  if (!value || !href) return null;
   return (
     <a
       href={href}

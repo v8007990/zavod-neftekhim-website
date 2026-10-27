@@ -70,12 +70,14 @@ export function Header() {
           </nav>
 
           <div className="hidden items-center gap-3 lg:flex">
-            <a
-              href={companyInfo.phoneHref}
-              className="text-sm font-semibold text-ink-800 hover:text-steel-800"
-            >
-              {companyInfo.phone}
-            </a>
+            {companyInfo.phoneHref && companyInfo.phone && (
+              <a
+                href={companyInfo.phoneHref}
+                className="text-sm font-semibold text-ink-800 hover:text-steel-800"
+              >
+                {companyInfo.phone}
+              </a>
+            )}
             <Button onClick={() => goToSection('#request')} variant="primary" icon={<ArrowRight />}>
               Запросить предложение
             </Button>
@@ -125,13 +127,15 @@ export function Header() {
                 )
               )}
               <div className="mt-3 flex flex-col gap-3 border-t border-ink-100 pt-4">
-                <a
-                  href={companyInfo.phoneHref}
-                  className="inline-flex items-center gap-2 px-3 text-base font-semibold text-ink-900"
-                >
-                  <Phone size={18} className="text-steel-600" />
-                  {companyInfo.phone}
-                </a>
+                {companyInfo.phoneHref && companyInfo.phone && (
+                  <a
+                    href={companyInfo.phoneHref}
+                    className="inline-flex items-center gap-2 px-3 text-base font-semibold text-ink-900"
+                  >
+                    <Phone size={18} className="text-steel-600" />
+                    {companyInfo.phone}
+                  </a>
+                )}
                 <Button onClick={() => { setOpen(false); goToSection('#request'); }} variant="primary" icon={<ArrowRight />}>
                   Запросить предложение
                 </Button>
